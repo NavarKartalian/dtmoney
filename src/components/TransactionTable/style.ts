@@ -34,6 +34,10 @@ export const Container = styled.div`
             &.withdraw{
                 color: var(--red);
             }
+            button{
+                border: none;
+                background: var(--shape);
+            }
         }
     }
 

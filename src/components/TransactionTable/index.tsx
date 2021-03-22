@@ -1,9 +1,13 @@
 import { useTransactions } from "../../hooks/useTransactions";
 import { Container } from "./style";
-
+import { FiTrash } from 'react-icons/fi';
 
 export function TransictionTable() {
-    const { transactions } = useTransactions();
+    const { transactions, removeTransaction } = useTransactions();
+
+    function handleRemoveTransaction(transactionId: number) {
+        removeTransaction(transactionId);
+    }
 
     return(
         <Container>
@@ -30,6 +34,11 @@ export function TransictionTable() {
                             <td>{transaction.category}</td>
                         <td>
                             {new Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createdAt))}
+                        </td>
+                        <td>
+                            <button type='button' onClick={() => handleRemoveTransaction(transaction.id)}>
+                                <FiTrash size={16} color="#eb3333"/>
+                            </button>
                         </td>
                     </tr>
                     ))}
